@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 2- create External Script name it External.js and Internal script inside <head>  -->
+
+
+
+    <script>
+      var num1 = 10
+      var num2 = '22'
+      var num3 = null
+
+
+    //   4- print in console result of simmition Num 1, Num2 with 6 digits 
+        console.log((Number(num1) + Number(num2)).toFixed(6));
+
+        //5- print summation of num1 , num3  
+        console.log(num1 + Number(num3));
+
+        //6- declare variable x with out initialization  
+        var x;
+
+
+        //7- multiply num 1  with x ; 
+        console.log(num1 * x);
+        
+            
+
+    </script>
+    <script src="external.js"></script>
+ 
+  </head>     
+<body>
+    <form action="#">
+        <label for="num1">Number 1:</label>
+
+        <input type="text" id="num1" name="num1" value="10"><br><br>
+        <label for="num2">Number 2:</label>
+        <input type="text" id="num2" name="num2" value="22"><br><br>
+        <label for="num3">Number 3:</label>
+        <input type="text" id="num3" name="num3" value=""><br><br>
+        <input type="submit" value="Submit">
+
+    </form>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+     <script>
+
+            var numbers = [3,1,2,4,3,5,1]
+            // Write a JavaScript code to remove duplicate items from an array. 
+            var temparray = []
+            for (var i=0; i<numbers.length; i++){
+                if (temparray.indexOf(numbers[i]) === -1){
+                    temparray.push(numbers[i])
+                }
+            }
+            console.log(temparray)
+
+        //     Sort them ascending 
+        //way 1 
+            temparray.sort(function(a, b){return a-b})
+            console.log(temparray)
+
+        //way 2
+        for (var i=0; i<temparray.length-1; i++){
+            for (var j=i+1; j<temparray.length; j++){
+                if (temparray[i] > temparray[j]){
+                    var temp = temparray[i]
+                    temparray[i] = temparray[j]
+                    temparray[j] = temp
+                }
+            }
+        }
+        console.log(temparray)
+
+           // Filter numbers larger than 50   
+        //   b- Array built in filter function 
+              var filtered = temparray.filter(function(value){
+                return value > 50
+              })
+              console.log(filtered)
+
+              //  User defined function 
+
+              function filterLargerThan50(arr){
+                var result = []
+                for (var i=0; i<arr.length; i++){
+                    if (arr[i] > 50){
+                        result.push(arr[i])
+                    }
+                }
+                return result
+              }
+            console.log( filterLargerThan50(temparray))
+              
+        //     Display Max and Min Numbers 
+        //way 1
+
+        var max = temparray[temparray.length - 1]
+        var min = temparray[0]
+        console.log("Max: " + max)
+        console.log("Min: " + min)
+        //way 2
+        for( i=0 ; i< temparray.length ; i++){
+            if (temparray[i] > max){
+                max = temparray[i]
+            }
+            if (temparray[i] < min){
+                min = temparray[i]
+            }
+        }
+        console.log("Max: " + max)
+        console.log("Min: " + min)
+  
+
+
+        // way3 b- Math functions using es6 feature (BONUS) 
+
+        function getminmax(...newarry){
+            var min = newarry[0];
+            var max = newarry[0];
+
+            for (var i = 1; i < newarry.length; i++) {
+                if (newarry[i] < min) {
+                    min = newarry[i];
+                }
+                if (newarry[i] > max) {
+                    max = newarry[i];
+                }
+            }
+            return {min, max};
+        }
+
+        var result = getminmax(...temparray);
+        console.log(`Min: ${result.min}, Max: ${result.max} `);
+        
+        
+
+       
+        
+//Write a JavaScript function to Compute the sum and product of an array of 
+//integers (Use eval)
+
+// a  Function header as  function sumAll(numbersArray) 
+// Note: using eval , function input is an array and function call will be as 
+// follow sumAll([3,1,4,5,2]); 
+
+        function sumandComputeAll(numbersArray){
+            var sum = eval(numbersArray.join('+'));
+            var product = eval(numbersArray.join('*'));
+            return {sum, product};
+        }
+
+        var result = sumandComputeAll([3,1,4,5,2]);
+        console.log(`Sum: ${result.sum}, Product: ${result.product}`);
+        
+// b- Function header as   function sumAll() 
+// Note: using eval and arguments array-like object
+      
+        function sumandComputeAllArgs(){
+            var array = Array.from(arguments);
+            var sum = eval(array.join('+'));
+            var product = eval(array.join('*'));
+                
+            return {sum, product};
+        }
+        var result = sumandComputeAllArgs(3,1,4,5,2);
+        console.log(`Sum: ${result.sum}, Product: ${result.product}`);
+           
+
+
+
+    // LAB 2 Part 2 
+  //  Receive String From User and do all possible validations Then write code to calculate this  
+
+        var input = prompt("Enter a string:");
+        // make possible validations
+        if (typeof input === 'string' && input.length > 0) {
+            var checkint = parseInt(input);
+            if (!isNaN(checkint)) {
+                console.log("The input is a valid string but represents an integer please enter string " + checkint);
+            }
+            input = input.trim();
+
+        } else {
+            console.log("Invalid input. Please enter a non-empty string.");
+        }
+        
+        //write js code that convert the first letter of each word to uppercase 
+        var words = input.split(' ');
+        for (var i = 0; i < words.length; i++) {
+            words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+        }
+        var resultString = words.join(' ');
+        console.log("Converted String " + resultString);
+
+       // write js code that find the longest word in the string 
+        var longestWord = "";
+        for (var i = 0; i < words.length; i++) {
+            if (words[i].length > longestWord.length) {
+                longestWord = words[i];
+            }
+        }
+        console.log(`The longest word is: ${longestWord}`);
+
+    </script>
+</head>
+<body>
+   
+
+
+</body>
+</html>
