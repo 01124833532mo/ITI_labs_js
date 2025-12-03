@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab3</title>
+</head>
+<body>
+    <script>
+        
+    var counter = 0;
+
+    var timer = setInterval(function () {
+
+        counter++;
+
+        document.body.innerHTML += `
+            <div style="
+                width:40px;
+                height:40px;
+                border:2px solid red;
+                color:green;
+                background-color:black;
+                font-size:25px;
+                display:flex;
+                color:white;
+                justify-content:center;
+                align-items:center;
+                margin-bottom:5px;
+            ">
+            ${counter}
+            </div>
+        `;
+
+        document.title = counter;
+
+        if (counter === 50) {
+            clearInterval(timer);
+        }
+
+    }, 1000);
+
+</script>
+    </script>
+    
+</body>
+</html>
