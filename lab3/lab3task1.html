@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+ 
+        var str = "welcome to js";
+        var index = 0;
+
+        var winobj = open("Assignment11.html", "child", "width=300,height=300");
+        winobj.document.write("<p>Check this window's console!</p>");
+        winobj.document.close();
+
+        var timer = setInterval(function () {
+            if (index < str.length) {
+                winobj.document.write(str[index]);
+                index++;
+            } else {
+                clearInterval(timer);
+            }
+        }, 500);
+
+    </script>
+</body>
+</html>
