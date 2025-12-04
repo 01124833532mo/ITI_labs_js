@@ -74,6 +74,31 @@ var allAbove18 = students.every(function(student){
 });
 document.write("<br>All students above age 18 ? " + allAbove18 + "<br>")
 
+// 9-return Students Who Have the Same Crs 
+var courseMap = {};
+for (var i=0; i<students.length; i++){
+    var course = students[i].Crs;
+    if (!courseMap[course]){
+        courseMap[course] = [];
+    }
+    courseMap[course].push(students[i]);
+}
+document.write("<br>Students grouped by Course:<br>")
+for (var course in courseMap){
+    document.write("<br>Course: " + course + "<br>")
+    document.write("<table border='1'><tr><th>Name</th><th>Age</th></tr>")
+    for (var j=0; j<courseMap[course].length; j++){
+        document.write("<tr><td>" + courseMap[course][j].name + "</td><td>" + courseMap[course][j].age + "</td></tr>")
+    }
+    document.write("</table>")
+}
+
+
+
+
+
+
+
 
 
 // 10-Calculate the average age of all students.
