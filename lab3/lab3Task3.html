@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Login Form</h2>
+
+Username: <input type="text" id="user"  ><br><br>
+Password: <input type="password" id="pass"  ><br><br>
+
+<button onclick="login()">Login</button>
+
+    <script>
+        
+
+
+function login() {
+
+    
+    var u = window.user.value;
+    var p = window.pass.value;
+    
+
+    if (u == "ali" && p == "123") {
+
+        var win = window.open("lab3Test.html", "welcome", "width=300,height=200");
+        win.document.body.innerHTML = `
+            <h2 style="color:red; text-align:center;">
+                Welcome ya Ali
+            </h2>
+        `;
+    } 
+    else {
+
+        var err = window.open("", "error", "width=300,height=150");
+        err.document.body.innerHTML = `
+            <h3 style="color:red; text-align:center;">
+                Username or Password Incorrect!
+            </h3>
+        `;
+    }
+}
+
+
+    </script>
+    
+</body>
+</html>
