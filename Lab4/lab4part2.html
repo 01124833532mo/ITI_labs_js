@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var students = [
+  { name: "Ali", age: 20, Crs: "CS" },
+  { name: "Sara", age: 22, Crs: "Math" },
+  { name: "Omar", age: 19, Crs: "Physics" },
+  { name: "Laila", age: 21, Crs: "CS" },
+  { name: "Hassan", age: 23, Crs: "Engineering" },
+  { name: "Mona", age: 20, Crs: "Biology" },
+  { name: "Kareem", age: 24, Crs: "Math" },
+  { name: "Noor", age: 18, Crs: "CS" }
+];
+
+//1- list Students in table with header of name , age , course 
+document.write("<h2>Students Table</h2>");
+document.write("<table border='1'><tr><th>Name</th><th>Age</th><th>Course</th></tr>");
+students.forEach(function(student) {
+    document.write("<tr><td>" + student.name + "</td><td>" + student.age + "</td><td>" + student.Crs + "</td></tr>");
+});
+document.write("</table><br><br>");
+
+//2- enable text form for user to search for user by  name or course 
+document.write("Search Student: <input type='text' id='searchInput' onkeyup='searchStudent()' placeholder='Enter name or course'><br><br>");
+document.write("<div id='searchResults'></div>");
+function searchStudent() {
+    var input = document.getElementById('searchInput').value.toLowerCase();
+    var resultsDiv = document.getElementById('searchResults');
+    var results = students.filter(function(student) {
+        return student.name.toLowerCase().includes(input) || student.Crs.toLowerCase().includes(input);
+    }); 
+    var resultHTML = "<h3>Search Results:</h3>";
+    if (results.length > 0) {
+        resultHTML += "<ul>";
+        results.forEach(function(student) {
+            resultHTML += "<li>" + student.name + " - Age: " + student.age + " - Course: " + student.Crs + "</li>";
+        });
+        resultHTML += "</ul>";
+    } else {
+        resultHTML += "<p>No matching students found.</p>";
+    }
+    resultsDiv.innerHTML = resultHTML;
+
+}
+
+//3- add dropdown list to sort students by age and by name and reflect result on table
+document.write("<br>Sort By: <select id='sortSelect' onchange='sortStudents()'><option value='name'>Name</option><option value='age'>Age</option></select><br><br>");
+function sortStudents() {
+    var criteria = document.getElementById('sortSelect').value;
+    if (criteria === 'name') {
+        students.sort(function(a, b) {
+           return a.name-b.name;
+        });
+    } else if (criteria === 'age') {
+        students.sort(function(a, b) {
+            return a.age - b.age;
+        });
+    }
+    // Rebuild table
+    var tableHTML = "<h2>Students Table</h2>";
+    tableHTML += "<table border='1'><tr><th>Name</th><th>Age</th><th>Course</th></tr>";
+    students.forEach(function(student) {
+        tableHTML += "<tr><td>" + student.name + "</td><td>" + student.age + "</td><td>" + student.Crs + "</td></tr>";
+    });
+    tableHTML += "</table>";
+    document.body.innerHTML = tableHTML + document.body.innerHTML;
+}
+
+
+
+</script>
+
+
+</body>
+</html>
