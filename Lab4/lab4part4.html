@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students Dropdown</title>
+
+    <style>
+        #studInfo {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            width: 220px;
+            font-size: 18px;
+        }
+    </style>
+
+    <script>
+        addEventListener("load", function () {
+            var students = [
+                { id: 1, name: "Mahmoud", age: 22, grade: "A" },
+                { id: 2, name: "Hager", age: 23, grade: "A+" },
+                { id: 3, name: "Omar", age: 21, grade: "B" },
+                { id: 4, name: "Sara", age: 20, grade: "A" }
+            ];
+
+            var select = document.getElementById("studSelect");
+            var info = document.getElementById("studInfo");
+
+            for (var i = 0; i < students.length; i++) {
+                var opt = document.createElement("option");
+                opt.value = students[i].id;
+                opt.innerText = students[i].id;
+                select.appendChild(opt);
+            }
+
+            select.addEventListener("change", function () {
+
+                var selectedID = this.value;
+
+                if (selectedID === "") {
+                    info.innerHTML = "";
+                    return;
+                }
+
+                var std = null;
+                for (var i = 0; i < students.length; i++) {
+                    if (students[i].id == selectedID) {
+                        std = students[i];
+                        break;
+                    }
+                }
+
+                info.innerHTML =
+                    "ID: " + std.id + "<br>" +
+                    "Name: " + std.name + "<br>" +
+                    "Age: " + std.age + "<br>" +
+                    "Grade: " + std.grade;
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+
+    <h2>Select Student ID</h2>
+
+    <select id="studSelect">
+        <option value="">-- Select Student --</option>
+    </select>
+
+    <div id="studInfo"></div>
+
+</body>
+</html>
