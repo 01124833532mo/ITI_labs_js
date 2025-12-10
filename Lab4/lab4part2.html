@@ -19,7 +19,6 @@
   { name: "Noor", age: 18, Crs: "CS" }
 ];
 
-//1- list Students in table with header of name , age , course 
 document.write("<h2>Students Table</h2>");
 document.write("<table border='1'><tr><th>Name</th><th>Age</th><th>Course</th></tr>");
 students.forEach(function(student) {
@@ -27,7 +26,6 @@ students.forEach(function(student) {
 });
 document.write("</table><br><br>");
 
-//2- enable text form for user to search for user by  name or course 
 document.write("Search Student: <input type='text' id='searchInput' onkeyup='searchStudent()' placeholder='Enter name or course'><br><br>");
 document.write("<div id='searchResults'></div>");
 function searchStudent() {
@@ -50,20 +48,18 @@ function searchStudent() {
 
 }
 
-//3- add dropdown list to sort students by age and by name and reflect result on table
 document.write("<br>Sort By: <select id='sortSelect' onchange='sortStudents()'><option value='name'>Name</option><option value='age'>Age</option></select><br><br>");
 function sortStudents() {
     var criteria = document.getElementById('sortSelect').value;
     if (criteria === 'name') {
         students.sort(function(a, b) {
-           return a.name-b.name;
+           return a.name.toLocaleUpperCase()-b.name.toUpperCase();
         });
     } else if (criteria === 'age') {
         students.sort(function(a, b) {
             return a.age - b.age;
         });
     }
-    // Rebuild table
     var tableHTML = "<h2>Students Table</h2>";
     tableHTML += "<table border='1'><tr><th>Name</th><th>Age</th><th>Course</th></tr>";
     students.forEach(function(student) {
