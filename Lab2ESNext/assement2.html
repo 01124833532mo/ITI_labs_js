@@ -11,58 +11,64 @@
         //1-Create a base class Shape with a method calcArea().
 
         class Shape {
-            #width
-            #hieght
-
-
-
-             constructor(_width, _hieght) {
-           this. width = _width;
-            this. hieght = _hieght;
-        }
-        calcArea() {
+            calcArea() {
          }
-        get width() {
-            return this.#width;
+    }
+  //  2-Create subclasses Rectangle and Circle, and override the calcArea() method in each.
+     class Rectangle extends Shape {
+        #width;
+        #height;
+
+        constructor(width, height) {
+            super();
+            this.width = width;
+            this.height = height;
         }
-        get hieght() {
-            return this.#hieght;
+
+
+        get width() { 
+            return this.#width;
+         }
+        get height() { 
+            return this.#height; 
         }
 
         set width(value) {
-            if(value>0){
-            this.#width = value;
-            }
-            return ;
+            if (value > 0) this.#width = value;
         }
-        set hieght(value) {
-            if(value>0){
-            this.#hieght = value;
-            }
-            return ;
+        set height(value) {
+            if (value > 0) this.#height = value;
         }
-    
-    
-    
-    }
-  //  2-Create subclasses Rectangle and Circle, and override the calcArea() method in each.
-    class Rectangle extends Shape {
-        constructor(_width, _hieght) {
-            super(_width, _hieght);
-        }
+
         calcArea() {
-            return this.width * this.hieght;
+            return this.#width * this.#height;
         }
     }
-    class Circle extends Shape {
+     class Circle extends Shape {
+        #radius;
+
         constructor(_radius) {
-            super(_radius, _radius);
+            super();
+            this.setradius = _radius; 
         }
+
+        get getradius() {
+            return this.#radius;
+        }
+
+        set setradius(value) {
+            if (value > 0) {
+                this.#radius = value;
+            }
+        }
+
         calcArea() {
-            return Math.PI * this.width * this.hieght;
+            return Math.PI * this.getradius * this.getradius;
         }
     }
-        let rectangle = new Rectangle(5, 10);
+
+        
+        let rectangle = new Rectangle(4, 10);
         let circle = new Circle(7);
 
         console.log(`Area of Rectangle ${rectangle.calcArea()}`); 
