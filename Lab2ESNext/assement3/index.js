@@ -1,4 +1,3 @@
-// index.js
 
 // 1. Import everything from both modules
 import { Employee, departments } from './employee.js';

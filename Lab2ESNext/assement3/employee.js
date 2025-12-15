@@ -12,9 +12,7 @@
                 return `${this.firstName} ${this.lastName}`;
             }
 
-
-
-        }
+     }
 
     //    3- out class Export an array departments with some department names (["IT","HR","Finance","Sales"]).
        export const departments = ["IT", "HR", "Finance", "Sales"];
