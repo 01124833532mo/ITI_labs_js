@@ -1,11 +1,16 @@
 function FetchGet(country) {
-    let URL = `https://restcountries.com/v2/name/${country}`;
-    fetch(URL, {
-        method: "GET"
-    }).then(res => res.json()).then(Data => {
-        console.log(Data);
-        RenderData(Data);
-    })
+    fetch(`https://restcountries.com/v2/name/${country}`)
+        .then(res => res.json())
+        .then(data => {
+            let mainCountry = data[0];
+            let neighbourCode = mainCountry.borders[1];
+
+            fetch(`https://restcountries.com/v2/alpha/${neighbourCode}`)
+                .then(res => res.json())
+                .then(neighbourData => {
+                    RenderData([mainCountry, neighbourData]);
+                });
+        });
 }
 
 function RenderData(countries) {
@@ -18,13 +23,13 @@ function RenderData(countries) {
         article.className = "country";
 
         article.innerHTML = `
-            <img class="country-img" src="${country.flag}" />
+            <img class="country-img" src="${country.flag}">
             <div class="country-data">
                 <h3 class="country-name">${country.name}</h3>
                 <h4 class="country-region">${country.region}</h4>
-                <p class="country-row"><span>🧑‍🤝‍🧑</span> ${country.population.toLocaleString()}</p>
-                <p class="country-row"><span>🗣</span> ${country.languages[0].name}</p>
-                <p class="country-row"><span>💰</span> ${country.currencies[0].name}</p>
+                <p class="country-row"> ${country.population.toLocaleString()}</p>
+                <p class="country-row"> ${country.languages[0].name}</p>
+                <p class="country-row"> ${country.currencies[0].name}</p>
             </div>
         `;
 
@@ -32,7 +37,8 @@ function RenderData(countries) {
     });
 }
 
-var btn=document.querySelector("#SearchCountry");
+var btn = document.querySelector("#SearchCountry");
+
 document.querySelector("#readData").addEventListener("click", function () {
     FetchGet(btn.value);
-})
+});
