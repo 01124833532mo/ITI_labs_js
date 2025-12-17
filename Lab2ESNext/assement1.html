@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      //  1- Create a base class Person with properties: name and age.
+        class Person {
+            constructor(_name, _age) {
+            this.name = _name;
+            this.age = _age;
+            }
+
+             introduce() {
+                 console.log(`i am ${this.name} and am ${this.age} years old.`);
+            }
+        }
+
+     //   2-Create a subclass Teacher with property subject and method teach().
+        class Teacher extends Person {
+            constructor(_name, _age, _subject) {
+                super(_name, _age);
+                this.subject = _subject;
+            }
+
+            teach() {
+                console.log(`${this.name} is teaching ${this.subject}.`);
+            }
+             introduce() {
+                console.log(` I am ${this.name}, a ${this.age} years old teacher of ${this.subject}.`);
+            }
+        }
+        //3-Create a subclass Student with property major and method study().
+        class Student extends Person {
+            constructor(_name, _age, _major) {
+                super(_name, _age);
+                this.major = _major;
+            }
+
+            study() {
+                console.log(`${this.name} is studying ${this.major}.`);
+            }
+               introduce() {
+               console.log(`I am ${this.name}, a ${this.age} years student majoring in ${this.major}.`);
+            }
+        }
+
+    //    4-Create objects of Teacher and Student, then call their methods.
+        let teacher = new Teacher("mohmaed", 40, "cs");
+        let student = new Student("ali", 20, "alogorithm");
+
+        teacher.teach(); 
+        student.study(); 
+
+
+    //5-override a method introduce() in both Teacher and Student.
+    
+    teacher.introduce();  
+    student.introduce();
+
+
+
+
+    </script>
+    
+</body>
+</html>

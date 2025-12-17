@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //1-Create a base class Shape with a method calcArea().
+
+        class Shape {
+            calcArea() {
+         }
+    }
+  //  2-Create subclasses Rectangle and Circle, and override the calcArea() method in each.
+     class Rectangle extends Shape {
+        #width;
+        #height;
+
+        constructor(width, height) {
+            super();
+            this.width = width;
+            this.height = height;
+        }
+
+
+        get width() { 
+            return this.#width;
+         }
+        get height() { 
+            return this.#height; 
+        }
+
+        set width(value) {
+            if (value > 0) this.#width = value;
+        }
+        set height(value) {
+            if (value > 0) this.#height = value;
+        }
+
+        calcArea() {
+            return this.#width * this.#height;
+        }
+    }
+     class Circle extends Shape {
+        #radius;
+
+        constructor(_radius) {
+            super();
+            this.setradius = _radius; 
+        }
+
+        get getradius() {
+            return this.#radius;
+        }
+
+        set setradius(value) {
+            if (value > 0) {
+                this.#radius = value;
+            }
+        }
+
+        calcArea() {
+            return Math.PI * this.getradius * this.getradius;
+        }
+    }
+
+        
+        let rectangle = new Rectangle(4, 10);
+        let circle = new Circle(7);
+
+        console.log(`Area of Rectangle ${rectangle.calcArea()}`); 
+        console.log(`Area of Circle ${circle.calcArea()}`);
+
+      // 3-Create an array of different shapes (both rectangles and circles).
+        let shapes = [
+            new Rectangle(4, 8),
+            new Circle(3),
+            new Rectangle(6, 12),
+            new Circle(5)
+        ];
+
+        //4-Loop through the array and calculate the area  shapes.
+
+            shapes.forEach(
+                (e)=>{
+                    console.log(e.calcArea())
+                }         
+              )
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
